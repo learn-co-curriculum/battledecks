@@ -106,3 +106,8 @@ https://github.com/dreamingechoes/bootstrap_sb_admin_base_v2
 
 
 https://github.com/comfy/active_link_to
+
+
+Deck URLS
+  BattleDeck 1 https://docs.google.com/presentation/d/1NAoKEKHCjtp7zSLNFRYzVCtoXwD8SexLKiUSFBGyuJg/edit?usp=sharing
+<iframe src="https://docs.google.com/presentation/d/1NAoKEKHCjtp7zSLNFRYzVCtoXwD8SexLKiUSFBGyuJg/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>

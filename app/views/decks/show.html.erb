@@ -1,0 +1,14 @@
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header"><%= @deck.name %></h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <iframe src="https://docs.google.com/presentation/d/<%= @deck.google_doc_id %>/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+      </div>
+  </div>
+</div>
