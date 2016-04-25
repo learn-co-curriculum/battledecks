@@ -12,4 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require bootstrap_sb_admin_base_v2

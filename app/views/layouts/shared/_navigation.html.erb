@@ -1,0 +1,31 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to "BattleDecks", root_path, :class => "navbar-brand" %>
+  </div>
+  <!-- /.navbar-header -->
+
+  <%#= render 'layout/shared/navigation/utility' %>
+
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <%#= render 'layout/shared/navigation/search' %>
+
+        <li>
+          <a class="active" href="blank.html">Blank Page</a>
+        </li>
+
+        <%#= render 'layout/shared/navigation/main' %>
+      </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+  </div>
+  <!-- /.navbar-static-side -->
+</nav>

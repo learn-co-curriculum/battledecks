@@ -6,13 +6,20 @@ users
 
 matches
   player_1_id  player_1_deck_id  player_2_id  player_2_deck_id   winner_id round tournament_id
+      1             1               2               2               1         1         1
+      3             3               4               4               4         1         1
+      1             5               4               6               4         2         1
 
 tournaments
   name           commissioner_id
+  May tourney        6
 
 tournament_players
   tournament_id    player_id
-
+        1             1
+        1             2
+        1             3
+        1             4
 
 0. Add a deck
 1. Register a user
@@ -96,3 +103,6 @@ http://stackoverflow.com/questions/19099583/bracket-display-with-twitter-bootstr
 https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S
 http://startbootstrap.com/template-overviews/sb-admin-2/
 https://github.com/dreamingechoes/bootstrap_sb_admin_base_v2
+
+
+https://github.com/comfy/active_link_to
