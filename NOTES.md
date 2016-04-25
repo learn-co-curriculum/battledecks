@@ -111,3 +111,12 @@ https://github.com/comfy/active_link_to
 Deck URLS
   BattleDeck 1 https://docs.google.com/presentation/d/1NAoKEKHCjtp7zSLNFRYzVCtoXwD8SexLKiUSFBGyuJg/edit?usp=sharing
 <iframe src="https://docs.google.com/presentation/d/1NAoKEKHCjtp7zSLNFRYzVCtoXwD8SexLKiUSFBGyuJg/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+Sprint 1: Configuring Our application
+
+Sprint 2: Decks to Users
+  - Lock down uploading decks to authenticated users - done
+  - Associate the deck with the users - done
+  - devise flash messages working.
+  - clean up / remove as much devise code not being used as possible.
+  - clean up some of the asset pipeline stuff

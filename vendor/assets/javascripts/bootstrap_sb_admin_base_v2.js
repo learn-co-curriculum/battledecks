@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require ./bootstrap/bootstrap.min
 //= require ./jquery/jquery.dataTables.min
 //= require ./bootstrap/dataTables.bootstrap.min
 //= require ./metis_menu/metisMenu.min
