@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :decks
+  has_many :managed_tournaments, :class_name => "Tournament", :foreign_key => :commissioner_id
+
+  has_many :tournament_players, :foreign_key => :player_id
+  has_many :played_tournaments, :through => :tournament_players, :class_name => "Tournament", :source => :tournament
+
 end

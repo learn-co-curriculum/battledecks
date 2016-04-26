@@ -22,6 +22,25 @@
           <%= link_to "Upload a Deck", new_deck_path %>
         </li>
 
+        <li>
+          <a href="#"><i class="fa fa-gavel" aria-hidden="true"></i> Tournaments<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li>
+              <%= link_to "Upcoming", tournaments_path %>
+            </li>
+            <li>
+              <a href="/users/1/tournaments">Managing</a>
+            </li>
+            <li>
+              <a href="/players/1/tournaments">Competing</a>
+            </li>
+            <li>
+              <%= link_to "New Tournament", new_tournament_path %>
+            </li>
+          </ul>
+        </li>
+
+
         <%#= render 'layout/shared/navigation/main' %>
       </ul>
     </div>
