@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe SiteController, type: :controller do
 
-  describe "GET '/'" do
+  describe "GET index" do
     it "returns http success" do
-      get '/'
+      get :index
       expect(response).to have_http_status(:success)
     end
   end

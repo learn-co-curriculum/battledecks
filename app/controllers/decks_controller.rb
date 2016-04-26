@@ -8,8 +8,10 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.build(deck_params)
     if @deck.save
+      flash[:success] = "Deck uploaded successfully, great job!!!"
       redirect_to @deck
     else
+      flash.now[:error] = "Could not upload invalid Deck. See details below."
       render :new
     end
   end

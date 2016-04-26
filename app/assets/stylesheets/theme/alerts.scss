@@ -1,0 +1,13 @@
+.alert-row{
+  @extend .row;
+  padding-top: 15px;
+
+  .alert{
+    margin-bottom: 0;
+  }
+}
+
+.login-panel .alert-row{
+  padding-top: 0;
+  margin-bottom: 15px;
+}

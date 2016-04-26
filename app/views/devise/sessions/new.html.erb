@@ -5,6 +5,8 @@
         <h3 class="panel-title">Please Sign In</h3>
       </div>
       <div class="panel-body">
+        <%= render_flash_alerts %>
+
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), :role => "form") do |f| %>
           <fieldset>
             <div class="form-group">

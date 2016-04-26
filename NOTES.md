@@ -117,6 +117,47 @@ Sprint 1: Configuring Our application
 Sprint 2: Decks to Users
   - Lock down uploading decks to authenticated users - done
   - Associate the deck with the users - done
-  - devise flash messages working.
-  - clean up / remove as much devise code not being used as possible.
-  - clean up some of the asset pipeline stuff
+
+Sprint 3: Clean Up
+  - devise flash messages working. - done
+  - clean up some of the asset pipeline stuff - done
+  - TODO: Figure out why flash message in devise isn't being set after failed registration.
+
+  Navigation
+  Tournament model
+  Tournament player
+  Tournament new
+
+  Tournament.player_ids_to_add=
+  addplayerbyid
+
+  Validations of adding players
+
+  Decks choice? - two step process vs 1 form?
+
+  Edit tournament / start / generate bracket
+
+  Player.available_for_tournament - add a player after a tourney has started?
+
+  Tournaments
+    Upcoming
+    Managing?
+    New
+  Decks
+  Stats
+
+  On hp - logged in
+  - upcoming tournaments
+  - your decks
+  - your stats
+  - current matches
+
+  On hp - not logged in
+    - recent matches
+    - about
+    - register / login
+
+  Deck generator?
+
+
+- clean up / remove as much devise code not being used as possible.

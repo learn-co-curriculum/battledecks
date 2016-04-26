@@ -20,8 +20,14 @@
 <body>
   <div id="wrapper">
     <%= render 'layouts/shared/navigation' %>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <%= render_flash_alerts %>
 
-    <%= yield %>
+        <%= yield %>
+
+      </div>
+    </div>
   </div>
 </body>
 </html>
