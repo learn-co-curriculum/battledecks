@@ -1,6 +1,10 @@
 # Sprint 3: Making Tournaments Real
+  [ ] /tournaments?scope=managing (Tournaments#index)
 
-  [ ] Bracket Generation and Matches
+  [ ] /tournaments/1 (Tournaments#show)
+
+  [ ] /tournaments/1/brackets/new (Brackets#new + create)
+    - Bracket Generation and Matches
 
   [ ] Deck Generation / Sample Decks
 
@@ -17,6 +21,8 @@
 
 # Sprint: Clean Up Navigation / Content
 
+  [ ] Fix Active Class on Main Navigation
+
   [ ] Fix the Login Menu
 
   [ ] Deck Sub Menu
@@ -27,6 +33,8 @@
 
   [ ] Devise Registration Flash Bug - No Flash Message on Failed Registration
 
+  [ ] Get custom playervalidation working as validator class
+  
 # Sprint: authorization
 
   [ ] Authorization Lock Down

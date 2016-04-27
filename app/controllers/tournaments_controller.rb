@@ -1,5 +1,18 @@
 class TournamentsController < ApplicationController
 
+  def index
+    params[:scope] ||= "upcoming"
+
+    @tournaments = if params[:scope] == "managing"
+      current_user.managed_tournaments
+    elsif params[:scope] == "playing"
+      current_user.played_tournaments
+    else
+      Tournament.upcoming
+    end
+  end
+
+
   def new
     @tournament = current_user.managed_tournaments.build
   end

@@ -29,10 +29,10 @@
               <%= link_to "Upcoming", tournaments_path %>
             </li>
             <li>
-              <a href="/users/1/tournaments">Managing</a>
+              <%= link_to "Managing", tournaments_path(:scope => "managing") %>
             </li>
             <li>
-              <a href="/players/1/tournaments">Competing</a>
+              <%= link_to "Playing", tournaments_path(:scope => "playing") %>
             </li>
             <li>
               <%= link_to "New Tournament", new_tournament_path %>

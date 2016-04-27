@@ -16,7 +16,11 @@ class Tournament < ActiveRecord::Base
 
   validates :name, :presence => true
   # validates_with PlayerValidator
-  validate :players_validation
+  # validate :players_validation
+
+  def self.upcoming
+    all
+  end
 
   def add_player(player)
     tournament_players.build(:player => player)
@@ -35,7 +39,7 @@ class Tournament < ActiveRecord::Base
 
   private
     def players_validation
-      if self.tournament_players.size < 3
+      if self.tournament_players.size < 2
         self.errors[:player_ids_to_add] << "at least 2 players needed"
       end
     end

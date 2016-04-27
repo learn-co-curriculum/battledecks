@@ -27,6 +27,8 @@ tournament_players
 3. Add players to the tournament
 4. Generate the bracket
   https://en.wikipedia.org/wiki/Round-robin_tournament
+
+
   12 players
   Round 1: 6 matches (12 players, 6 winners)
   Round 2: 3 matches (6 players, 3 winners)

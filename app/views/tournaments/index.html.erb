@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header"><%= params[:scope].capitalize %> Tournaments</h1>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="list-group">
+			<% @tournaments.each do |tournament| %>
+			<%= link_to tournament_path(tournament), :class => "list-group-item" do %>
+				<div class="media">
+					<span class="label label-info pull-right"><%= pluralize(tournament.players.size, "Player") %></span>
+					<div class="pull-left">
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading"><%= tournament.name %></h4>
+						<!-- <p>Página Ativa</p> -->
+					</div>
+				</div>
+			<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
