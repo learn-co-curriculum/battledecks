@@ -1,13 +1,11 @@
 # Sprint 3: Making Tournaments Real
-  [ ] /tournaments?scope=managing (Tournaments#index)
+  [x] /tournaments?scope=managing (Tournaments#index)
 
-  [ ] /tournaments/1 (Tournaments#show)
+  [x] /tournaments/1 (Tournaments#show)
 
   [ ] /tournaments/1/brackets/new (Brackets#new + create)
     - Bracket Generation and Matches
-
-  [ ] Deck Generation / Sample Decks
-
+ 
   [ ] Bracket Preview
 
   [ ] Tournament Show / Match Show / Round Show
@@ -16,9 +14,13 @@
 
   [ ] Votes
 
+  [ ] Deck Generation / Sample Decks
+
   [ ] Edit Tournament Players
   - Ability to add / remove players for a tourney.
 
+  [ ] Validate player numbers by powers 2
+  
 # Sprint: Clean Up Navigation / Content
 
   [ ] Fix Active Class on Main Navigation

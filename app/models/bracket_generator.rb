@@ -1,5 +1,3 @@
-
-
 class BracketGenerator
   attr_reader :tournament, :rounds
 
@@ -7,7 +5,7 @@ class BracketGenerator
     @tournament = tournament
     @players = tournament.players
     @rounds = {}
-    (1..(@players.size/2)).each do |round_number|
+    (1..number_of_rounds).each do |round_number|
       matches_in_round = (@players.size/round_number/2)
       @rounds[round_number] = {}
       matches_in_round.times do |match_number|
@@ -18,24 +16,18 @@ class BracketGenerator
   end
 
   def generate_round(round = 1)
-    # players = @tournament.players
-    # player_ids = @tournament.player_ids
     case round
     when 1
-      # round_pairings(@tournament.player_ids)
       @rounds[round] = round_pairings(@tournament.player_ids).to_h
-      # binding.pry
-      # what i need to do is take the ids in the players
-      # and do like a first plays last sort of outside-in thing
-      # [1,2,3,4,5,6]
-      # [[1,6], [2,5], [3,4]]
     end
   end
 
+  def number_of_rounds
+    @number_of_rounds ||= Math.log(@players.size, 2)
+  end
 
-  # private
+  private
     def round_pairings(player_ids)
-      # bracket pairing - what this method does is generate the pairing of opponents in a round
       0.upto((player_ids.size/2)-1).collect do |i|
         [player_ids[i], player_ids[player_ids.size-i-1]]
       end
@@ -43,7 +35,7 @@ class BracketGenerator
 end
 
 
-
+# NOTES:
 # players [1,2,3,4] # even number of players but divided by 2 is even
 
 # {
@@ -90,3 +82,4 @@ end
 #
 #   2 => {1 => 2, 3 => 4,}
 # }
+
