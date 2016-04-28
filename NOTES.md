@@ -4,6 +4,10 @@ decks
 users
    name    email
 
+votes
+  match_id     voter_id     player_id
+    1              7            1
+
 matches
   player_1_id  player_1_deck_id  player_2_id  player_2_deck_id   winner_id round tournament_id
       1             1               2               2               1         1         1

@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      <%= @tournament.name %> - Round: <%= params[:id] %> - <%= @match.player_1.email %> vs <%= @match.player_2.email %>
+      <% if @tournament.commissioner?(current_user) %>
+      <div class="pull-right">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            Commissioner Actions
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu pull-right" role="menu">
+            <li><%= link_to "End Match", tournament_match_path(@tournament, @match, :status => :end), :method => :patch %></li>
+          </ul>
+        </div>
+      </div>      
+      <% end %>
+    </h1>
+
+
+  </div>
+
+
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="thumbnail">
+      <img src="http://placehold.it/590x360" alt="ALT NAME" class="img-responsive" />
+      <div class='caption'>
+        <div class="row">
+          <div class='col-xs-8 col-md-8'>
+            <h3><%= @match.player_1.email %></h3>
+          </div>
+          <div class="col-xs-4 col-md-4 review">
+            <div class="panel status panel-primary">
+              <div class="panel-heading">
+                <h1 class="panel-title text-center">Votes</h1>
+              </div>
+              <div class="panel-body text-center"><%= @match.player_1_votes_count %></div>
+            </div>          
+          </div>
+        </div>
+        <p align="center">
+          <%= link_to "Vote", tournament_match_votes_path(@tournament, @match, :player_id => @match.player_1.id), :class => "btn btn-primary btn-block", :method => :post %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="thumbnail">
+      <img src="http://placehold.it/590x360" alt="ALT NAME" class="img-responsive" />
+      <div class='caption'>
+        <div class="row">
+          <div class='col-xs-8 col-md-8'>
+            <h3><%= @match.player_2.email %></h3>
+          </div>
+          <div class="col-xs-4 col-md-4 review">
+            <div class="panel status panel-primary">
+              <div class="panel-heading">
+                <h1 class="panel-title text-center">Votes</h1>
+              </div>
+              <div class="panel-body text-center"><%= @match.player_2_votes_count %></div>
+            </div>          
+          </div>
+        </div>
+        <p align="center">
+          <%= link_to "Vote", tournament_match_votes_path(@tournament, @match, :player_id => @match.player_2.id), :class => "btn btn-primary btn-block", :method => :post %>
+        </p>
+      </div>
+      </div>
+  </div>
+</div>

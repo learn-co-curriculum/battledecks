@@ -15,10 +15,32 @@ class BracketGenerator
     end
   end
 
+  def generate_matches(round = 1)
+    # case round
+    # when 1
+      # {3=>10, 4=>9, 5=>8, 6=>7}
+      rounds[round.to_i].each do |player_1_id, player_2_id|
+        # How to get 2 unique decks for each player
+        player_1_deck, player_2_deck = Deck.random(2)
+
+        Match.create(
+          :player_1_id => player_1_id, 
+          :player_2_id => player_2_id, 
+          :tournament => @tournament, 
+          :round => round, 
+          :player_1_deck => player_1_deck,
+          :player_2_deck => player_2_deck
+        )
+      end      
+    # end
+  end
+
   def generate_round(round = 1)
-    case round
+    case round.to_i
     when 1
-      @rounds[round] = round_pairings(@tournament.player_ids).to_h
+      @rounds[round.to_i] = initial_round_pairings(@tournament.player_ids).to_h
+    else
+      @rounds[round.to_i] = round_pairings(@tournament.winner_ids_for_round(round.to_i-1)).to_h
     end
   end
 
@@ -27,10 +49,14 @@ class BracketGenerator
   end
 
   private
-    def round_pairings(player_ids)
+    def initial_round_pairings(player_ids)
       0.upto((player_ids.size/2)-1).collect do |i|
         [player_ids[i], player_ids[player_ids.size-i-1]]
       end
+    end
+
+    def round_pairings(player_ids)
+      player_ids.each_slice(2).to_a
     end
 end
 

@@ -18,6 +18,36 @@ class Tournament < ActiveRecord::Base
   # validates_with PlayerValidator
   # validate :players_validation
 
+  has_many :matches
+
+  def commissioner?(user)
+    user == commissioner
+  end
+
+  def round_complete?(round)
+    # if all the matches in the round have a winner
+    # SELECT 1 FROM matches WHERE round = 1 AND winner IS NOT NILL
+    matches.active.empty?
+  end
+
+  def has_rounds?
+    matches.exists?
+  end
+
+  def winner_ids_for_round(round = 1)
+    matches.round(round).collect{|m| m.winner_id}
+  end
+
+  def rounds
+    # TODO: Try to get SQL grouping to work.
+    matches.group_by{|m| m.round}
+  end
+
+  # TODO: Possibly Deprecate
+  def has_round?(round = 1)
+    matches.round(round).exists?
+  end
+
   def self.upcoming
     all
   end

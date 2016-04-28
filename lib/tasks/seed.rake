@@ -31,4 +31,14 @@ namespace :seed do
     u12 = User.create(:email => "player_12@battledecks.com", :password => "testtest")
     u13 = User.create(:email => "player_13@battledecks.com", :password => "testtest")
   end
+
+  desc 'Generate 64 Decks'
+  task :decks => :environment do
+    64.times do |i|
+      Deck.create(:user => User.first, 
+                  :url => "https://docs.google.com/presentation/d/1NAoKEKHCjtp7zSLNFRYzVCtoXwD8SexLKiUSFBGyuJg/edit?usp=sharing", 
+                  :name => "Deck #{i}"
+      )
+    end
+  end
 end

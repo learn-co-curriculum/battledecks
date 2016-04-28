@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426190824) do
+ActiveRecord::Schema.define(version: 20160428183759) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "decks", force: :cascade do |t|
     t.string   "name"
@@ -21,7 +24,23 @@ ActiveRecord::Schema.define(version: 20160426190824) do
     t.integer  "user_id"
   end
 
-  add_index "decks", ["user_id"], name: "index_decks_on_user_id"
+  add_index "decks", ["user_id"], name: "index_decks_on_user_id", using: :btree
+
+  create_table "matches", force: :cascade do |t|
+    t.integer  "player_1_id"
+    t.integer  "player_1_deck_id"
+    t.integer  "player_2_id"
+    t.integer  "player_2_deck_id"
+    t.integer  "winner_id"
+    t.integer  "round"
+    t.integer  "tournament_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "matches", ["round"], name: "index_matches_on_round", using: :btree
+  add_index "matches", ["tournament_id"], name: "index_matches_on_tournament_id", using: :btree
+  add_index "matches", ["winner_id"], name: "index_matches_on_winner_id", using: :btree
 
   create_table "tournament_players", force: :cascade do |t|
     t.integer  "tournament_id"
@@ -30,9 +49,9 @@ ActiveRecord::Schema.define(version: 20160426190824) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "tournament_players", ["player_id"], name: "index_tournament_players_on_player_id"
-  add_index "tournament_players", ["tournament_id", "player_id"], name: "index_tournament_players_on_tournament_id_and_player_id", unique: true
-  add_index "tournament_players", ["tournament_id"], name: "index_tournament_players_on_tournament_id"
+  add_index "tournament_players", ["player_id"], name: "index_tournament_players_on_player_id", using: :btree
+  add_index "tournament_players", ["tournament_id", "player_id"], name: "index_tournament_players_on_tournament_id_and_player_id", unique: true, using: :btree
+  add_index "tournament_players", ["tournament_id"], name: "index_tournament_players_on_tournament_id", using: :btree
 
   create_table "tournaments", force: :cascade do |t|
     t.string   "name"
@@ -41,7 +60,7 @@ ActiveRecord::Schema.define(version: 20160426190824) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "tournaments", ["commissioner_id"], name: "index_tournaments_on_commissioner_id"
+  add_index "tournaments", ["commissioner_id"], name: "index_tournaments_on_commissioner_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -58,7 +77,19 @@ ActiveRecord::Schema.define(version: 20160426190824) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "match_id"
+    t.integer  "voter_id"
+    t.integer  "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "votes", ["match_id", "voter_id"], name: "index_votes_on_match_id_and_voter_id", unique: true, using: :btree
+  add_index "votes", ["match_id"], name: "index_votes_on_match_id", using: :btree
+  add_index "votes", ["voter_id"], name: "index_votes_on_voter_id", using: :btree
 
 end

@@ -9,4 +9,7 @@ class Deck < ActiveRecord::Base
     @google_doc_id ||= url.split("/d/").last.split("/").first.strip
   end
 
+  def self.random(limit)
+    limit(limit).order("RANDOM()")
+  end
 end

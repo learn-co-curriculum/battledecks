@@ -1,7 +1,26 @@
 class BracketsController < ApplicationController
+  before_action :set_tournament_and_bracket
+
   def new
-    @tournament = Tournament.find(params[:tournament_id])
-    @bracket = BracketGenerator.new(@tournament)
     @bracket.generate_round(1)
   end
+
+  def create
+    @bracket.generate_round(1)    
+    @bracket.generate_matches(1)
+    redirect_to @tournament
+  end
+
+  def update
+    @bracket.generate_round(params[:round])
+    @bracket.generate_matches(params[:round])
+    redirect_to @tournament
+  end
+
+  private
+    def set_tournament_and_bracket
+      @tournament = Tournament.find(params[:tournament_id])
+      @bracket = BracketGenerator.new(@tournament)
+    end
+
 end

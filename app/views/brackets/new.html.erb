@@ -12,7 +12,7 @@
         <% round_matches.each do |player_1, player_2| %>
         <li class="spacer">&nbsp;</li>
 
-    		<li class="game game-top winner"><%= player_1.to_i != 0 ? User.find(player_1).email : "" %> <!--<span>79</span>--></li>
+    		<li class="game game-top"><%= player_1.to_i != 0 ? User.find(player_1).email : "" %> <!--<span>79</span>--></li>
     		<li class="game game-spacer">&nbsp;</li>
     		<li class="game game-bottom "><%= player_2.to_i != 0 ? User.find(player_2).email : "" %> <!--<span>79</span>--></li>
 
@@ -22,7 +22,7 @@
       <% end %>
       <ul class="round round-<%= @bracket.rounds.size+1 %>">
         <li class="spacer">&nbsp;</li>
-        <li class="game game-top winner"></li>
+        <li class="game game-top"></li>
         <li class="spacer">&nbsp;</li>
       </ul>
         <!--
@@ -127,3 +127,12 @@
     </main>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <%= link_to tournament_bracket_path(@tournament), :method => :post, :class => "btn btn-primary btn-lg btn-block" do %>
+      <i class="fa fa-list"></i> Generate Matches
+    <% end %>
+  </div>
+</div>
+
