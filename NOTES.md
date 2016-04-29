@@ -164,6 +164,22 @@ Sprint 3: Clean Up
     - register / login
 
   Deck generator?
+  
+How do we know if a match is ready to start? - What's that even mean.
+  - Both players upload their presentations for that deck/round (youtube URL)
+  - Commissioner approves and hits start match?
 
+-> When a match is started, viewers can vote for winners.
+  - Is there a timelimit for voting or is it up to the commissioner to start/end a match?
+
+On the match show page, if you are logged in as the player in the match  
+  and then the ability to upload a youtube URL of your presentation
+  you should see the deck you have to use
+    - in theory, for an online event, to prevent people from rehearsing the deck, we should show them their deck and force them to upload within 10 minutes or something...
+
+
+We have the ability for the players to upload their presentations
+
+Once both players have uploaded their presentations, allow users to vote on the presentations
 
 - clean up / remove as much devise code not being used as possible.

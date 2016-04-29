@@ -16,7 +16,7 @@
         </div>
       </div>
       <p align="center">
-        <%= link_to "Vote", tournament_match_votes_path(@tournament, @match, :player_id => player_id(@match, player)), :class => "btn btn-primary btn-block", :method => :post %>
+        <%= render_voting(@match, player) %>
       </p>
     </div>
   </div>

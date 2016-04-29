@@ -47,6 +47,10 @@ class Match < ActiveRecord::Base
   def winner_is?(player)
     winner == player
   end
+  
+  def can_user_vote?(user)
+    !(player_1?(user) || player_2?(user))
+  end
 
   def start!
     raise "Implement me!".inspect
@@ -54,6 +58,10 @@ class Match < ActiveRecord::Base
   
   def end!
     declare_winner
+  end
+
+  def ready?
+    presentation_uploaded?(:player_1) && presentation_uploaded?(:player_2)
   end
 
   def over?
