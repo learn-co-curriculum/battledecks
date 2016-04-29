@@ -1,0 +1,8 @@
+<% if upload_presentation %>
+  <%= link_to new_tournament_match_presentation_path(@tournament, @match), :class => "btn btn-primary btn-lg btn-block" do %>
+    <i class="fa fa-youtube"></i> Upload Your Video
+  <% end %>        
+<% else %>          
+  <img src="http://placehold.it/590x360" alt="ALT NAME" class="img-responsive" />
+<% end %>
+

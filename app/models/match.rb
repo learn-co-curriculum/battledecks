@@ -16,6 +16,30 @@ class Match < ActiveRecord::Base
     votes.create(:voter => voter, :player_id => player_id)
   end
 
+  def submit_presentation(player, match_params)
+    update(match_params)
+  end
+  
+  def presentation_uploaded?(player_number)
+    send("#{player_number}_presentation_url").present?
+  end
+
+  def current_player(player)
+    if player_1?(player)
+      :player_1 
+    elsif player_2?(player)
+      :player_2
+    end
+  end
+
+  def player_1?(player)
+    player_1 == player
+  end
+
+  def player_2?(player)
+    player_2 == player
+  end
+
   def update_status(status)
     send("#{status}!")
   end

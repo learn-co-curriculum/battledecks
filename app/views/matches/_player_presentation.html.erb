@@ -1,0 +1,23 @@
+<div class="col-lg-6">
+  <div class="thumbnail">
+    <%= render_presentation_for(@match, player) %>
+    <div class='caption'>
+      <div class="row">
+        <div class='col-xs-8 col-md-8'>
+          <h3><%= player_header(@match, player) %></h3>
+        </div>
+        <div class="col-xs-4 col-md-4 review">
+          <div class="panel status panel-primary">
+            <div class="panel-heading">
+              <h1 class="panel-title text-center">Votes</h1>
+            </div>
+            <div class="panel-body text-center"><%= player_vote_count(@match, player) %></div>
+          </div>          
+        </div>
+      </div>
+      <p align="center">
+        <%= link_to "Vote", tournament_match_votes_path(@tournament, @match, :player_id => player_id(@match, player)), :class => "btn btn-primary btn-block", :method => :post %>
+      </p>
+    </div>
+  </div>
+</div>

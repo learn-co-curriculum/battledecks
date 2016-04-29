@@ -6,9 +6,8 @@ class BracketGenerator
     @players = tournament.players
     @rounds = {}
     (1..number_of_rounds).each do |round_number|
-      matches_in_round = (@players.size/round_number/2)
       @rounds[round_number] = {}
-      matches_in_round.times do |match_number|
+      matches_in_round(round_number).times do |match_number|
         place_holder_letter = ("A".."Z").to_a[match_number-1]
         @rounds[round_number][place_holder_letter] = nil
       end
@@ -46,6 +45,14 @@ class BracketGenerator
 
   def number_of_rounds
     @number_of_rounds ||= Math.log(@players.size, 2)
+  end
+
+  def matches_in_round(round_number)
+    if round_number == 1
+      @players.size/round_number/2
+    else
+      @rounds[round_number-1].size/2
+    end
   end
 
   private

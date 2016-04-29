@@ -17,10 +17,4 @@ class BracketsController < ApplicationController
     redirect_to @tournament
   end
 
-  private
-    def set_tournament_and_bracket
-      @tournament = Tournament.find(params[:tournament_id])
-      @bracket = BracketGenerator.new(@tournament)
-    end
-
 end
