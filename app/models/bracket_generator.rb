@@ -14,6 +14,11 @@ class BracketGenerator
     end
   end
 
+  def generate(round = 1)
+    generate_round(round.to_i)
+    generate_matches(round.to_i)
+  end
+
   def generate_matches(round = 1)
     # case round
     # when 1
@@ -55,16 +60,16 @@ class BracketGenerator
     end
   end
 
-  private
-    def initial_round_pairings(player_ids)
-      0.upto((player_ids.size/2)-1).collect do |i|
-        [player_ids[i], player_ids[player_ids.size-i-1]]
-      end
+  def initial_round_pairings(player_ids)
+    0.upto((player_ids.size/2)-1).collect do |i|
+      [player_ids[i], player_ids[player_ids.size-i-1]]
     end
+  end
 
-    def round_pairings(player_ids)
-      player_ids.each_slice(2).to_a
-    end
+  def round_pairings(player_ids)
+    player_ids.each_slice(2).to_a
+  end
+
 end
 
 

@@ -1,44 +1,51 @@
 require 'rails_helper'
 
 RSpec.describe BracketGenerator do
-  context '#round_pairings' do
-    let(:bracket){BracketGenerator.new(Object.new)}
+  describe '#initial_round_pairings' do
+    let(:bracket){BracketGenerator.new(create(:active_tournament))}
     it 'generates the correct pairings for 4,6,8,12,36' do
-      expect(bracket.round_pairings((1..4).to_a)).to eq([[1, 4], [2, 3]])
-      expect(bracket.round_pairings((1..6).to_a)).to eq([[1, 6], [2, 5], [3, 4]])
-      expect(bracket.round_pairings((1..8).to_a)).to eq([[1, 8], [2, 7], [3, 6], [4, 5]])
-      expect(bracket.round_pairings((1..12).to_a)).to eq([[1, 12], [2, 11], [3, 10], [4, 9], [5, 8], [6, 7]])
-      expect(bracket.round_pairings((1..24).to_a)).to eq([[1, 24], [2, 23], [3, 22], [4, 21], [5, 20], [6, 19], [7, 18], [8, 17], [9, 16], [10, 15], [11, 14], [12, 13]])
+      expect(bracket.initial_round_pairings((1..4).to_a)).to eq([[1, 4], [2, 3]])
+      expect(bracket.initial_round_pairings((1..6).to_a)).to eq([[1, 6], [2, 5], [3, 4]])
+      expect(bracket.initial_round_pairings((1..8).to_a)).to eq([[1, 8], [2, 7], [3, 6], [4, 5]])
+      expect(bracket.initial_round_pairings((1..12).to_a)).to eq([[1, 12], [2, 11], [3, 10], [4, 9], [5, 8], [6, 7]])
+      expect(bracket.initial_round_pairings((1..24).to_a)).to eq([[1, 24], [2, 23], [3, 22], [4, 21], [5, 20], [6, 19], [7, 18], [8, 17], [9, 16], [10, 15], [11, 14], [12, 13]])
     end
   end
 
-  let!(:u1){User.create(:email => "player_1@battledecks.com", :password => "testtest")}
-  let!(:u2){User.create(:email => "player_2@battledecks.com", :password => "testtest")}
-  let!(:u3){User.create(:email => "player_3@battledecks.com", :password => "testtest")}
-  let!(:u4){User.create(:email => "player_4@battledecks.com", :password => "testtest")}
+  let!(:u1){create(:player)}
+  let!(:u2){create(:player)}
+  let!(:u3){create(:player)}
+  let!(:u4){create(:player)}
 
-  let!(:two_round_bracket){Tournament.create(:name => "Two Round Bracket")}
-  before do
-    TournamentPlayer.create(:tournament => two_round_bracket, :player => u1)
-    TournamentPlayer.create(:tournament => two_round_bracket, :player => u2)
-    TournamentPlayer.create(:tournament => two_round_bracket, :player => u3)
-    TournamentPlayer.create(:tournament => two_round_bracket, :player => u4)
-  end
+  let!(:two_round_tournament){
+    build(:tournament) do |t|
+      t.add_player(u1)
+      t.add_player(u2)
+      t.add_player(u3)
+      t.add_player(u4)
+      t.save
+    end
+  }
 
   it 'takes in a tournament as an argument' do
-    expect{BracketGenerator.new(two_round_bracket)}.to_not raise_error
+    expect{BracketGenerator.new(two_round_tournament)}.to_not raise_error
   end
 
   it 'can return the tournament it is generating for' do
-    bracket = BracketGenerator.new(two_round_bracket)
-    expect(bracket.tournament).to eq(two_round_bracket)
+    bracket = BracketGenerator.new(two_round_tournament)
+    expect(bracket.tournament).to eq(two_round_tournament)
   end
 
   it 'can generate a bracket for round 1' do
-    bracket = BracketGenerator.new(two_round_bracket)
-
-    round = bracket.generate_round
-    expect(round[1].keys).to match_array([1,2])
-    expect(round[1].values).to match_array([4,3])
+    bracket = BracketGenerator.new(two_round_tournament)
+    bracket.generate_round(1)
+    
+    # Player 1 vs Player 4
+    expect(bracket.rounds[1].keys[0]).to eq(u1.id)
+    expect(bracket.rounds[1].values[0]).to eq(u4.id)
+    
+    # Player 2 vs Player 3
+    expect(bracket.rounds[1].keys[1]).to eq(u2.id)
+    expect(bracket.rounds[1].values[1]).to eq(u3.id)
   end
 end

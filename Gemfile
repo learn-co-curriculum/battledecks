@@ -39,7 +39,12 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'quiet_assets'
   gem 'pry'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
+
+gem 'simplecov', :group => [:test]
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views

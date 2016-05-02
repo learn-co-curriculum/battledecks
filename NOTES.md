@@ -183,3 +183,48 @@ We have the ability for the players to upload their presentations
 Once both players have uploaded their presentations, allow users to vote on the presentations
 
 - clean up / remove as much devise code not being used as possible.
+
+Navigation Flows:
+
+'/'
+1. Not logged in, marketing homepage, register, login, upcoming matches.
+2. Logged in, dashboard, upcoming matches, data table with playing, managing, viewing, public. Upload a Deck. Vote on a Match. Start a Tournament. News Feed
+
+Navigation:
+  Live
+    Current Tournaments - /tournaments/current
+    Current Matches - /matches/current
+  Decks
+    Your Decks - /users/1/decks
+    Upload a Deck - /decks/new
+  Tournaments
+    Managing - /tournaments/managing
+    Playing - /tournaments/playing
+  Stats - /stats
+
+How a Player Gets to Match
+  - From homepage, sees current matches and upcoming tournaments.
+    current matches links to a match that player has to upload a presentation for (match#show) and lists matches people are voting on or that have ended recently.
+  - From Current Matches (/matches/current), sees matches requirng activity.
+  - From Tournaments/Playing, sees current match and active tournament matches.
+  - Notification Nav in Utility Nav with messages of required activity.
+
+Player Match Flow
+  Once player lands on Match#show for an active match that they have activity on.
+
+  Give Them Instructions:
+    - For online tournaments
+      1. From the moment they download the deck, they will have 30 minutes to upload a youtube
+    - For in-person tournaments
+      1. Comissioner or a player can upload at whatever time.
+
+Uploading a presentation for a match:
+  http://localhost:3000/tournaments/4/matches/35/presentations/new
+  1. You are either player_1, player_2, or a commissioner of this tournament.
+  2. The match has "started".
+
+  Capybara for feature tests
+  FactoryGirl for test data
+  database_cleaner for better test data
+  Pundit to manage authorizatoin rules 
+
