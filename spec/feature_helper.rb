@@ -3,7 +3,11 @@ require 'capybara/rspec'
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
-
+  config.include Warden::Test::Helpers
+  config.before :suite do
+    Warden.test_mode!
+  end
+  
   config.before(:suite) do
     if config.use_transactional_fixtures?
       raise(<<-MSG)

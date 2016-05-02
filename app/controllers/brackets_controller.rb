@@ -1,4 +1,5 @@
 class BracketsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_tournament_and_bracket
 
   def new

@@ -1,7 +1,14 @@
 class PresentationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_tournament_and_match
 
   def new
+    begin
+      authorize @match, :upload_presentation?
+    rescue Pundit::NotAuthorizedError
+      flash[:error] = "You are not authorized to upload a presentation for this match."
+      redirect_to tournament_match_path(@tournament, @match)
+    end
   end
 
   def create
