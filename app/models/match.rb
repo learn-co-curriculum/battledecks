@@ -8,6 +8,10 @@ class Match < ActiveRecord::Base
 
   has_many :votes
 
+  def self.in_progress
+    (1..9).to_a
+  end
+
   def vote_for(player_id, voter)
     if has_vote_by?(voter)
       votes.voter(voter).destroy_all

@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Welcome to BattleDecks!</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="jumbotron">
+      <h1>Challenge Your Presentation Abilities!!!</h1>
+      <p>On BattleDecks you can challenge your presentation abilities by competing in tournaments where you have to present a deck you've never seen. Make it inspirational, make it funny, make it yours, just don't lose!</p>
+      <p>
+        <%= link_to "Register Now!", new_user_registration_path, :class => "btn btn-primary btn-lg center-block text-center", :role => "button" %>
+      </p>
+      <span class="center-block text-center">or</span>
+      <p><%= link_to "Login", new_user_session_path, :class => "center-block text-center" %></p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h2 class="page-header">Upcoming Tournaments and Matches</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4 col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-calendar fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge"><%= @upcoming_tournaments.size %></div>
+            <div>Upcoming</div>
+          </div>
+        </div>
+      </div>
+      <a href="#">
+        <div class="panel-footer">
+          <span class="pull-left">View <%= pluralize(@upcoming_tournaments.size, "Upcoming Tournament") %></span>
+          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+          <div class="clearfix"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6">
+    <div class="panel panel-yellow">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-tasks fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge"><%= @in_progress_matches.size %></div>
+            <div>In-Progress</div>
+          </div>
+        </div>
+      </div>
+      <a href="#">
+        <div class="panel-footer">
+          <span class="pull-left">View <%= pluralize(@in_progress_matches.size, "In-Progress Match") %></span>
+          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+          <div class="clearfix"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6">
+    <div class="panel panel-green">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-trophy fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge"><%= @finished_tournaments.size %></div>
+            <div>Finished</div>
+          </div>
+        </div>
+      </div>
+      <a href="#">
+        <div class="panel-footer">
+          <span class="pull-left">View <%= pluralize(@finished_tournaments.size, "Finished Tournament") %></span>
+          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+          <div class="clearfix"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-bell fa-fw"></i> Recent Activity
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <% 8.times do %>
+          <li href="#" class="list-group-item">
+            <i class="fa fa-comment fa-fw"></i> New Comment
+            <span class="pull-right text-muted small"><em>4 minutes ago</em>
+            </span>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

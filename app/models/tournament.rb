@@ -52,6 +52,10 @@ class Tournament < ActiveRecord::Base
     all
   end
 
+  def self.finished
+    (1..5).to_a
+  end
+
   def add_player(player)
     tournament_players.build(:player => player)
   end
